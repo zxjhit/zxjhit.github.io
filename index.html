@@ -142,12 +142,10 @@
           <td width="80%" valign="top">
             <papertitle>Mapping with GNSS prior constraint，IMU pre-integration constraint and relative pose constraint from front-end and loop closure</papertitle>
               </p><p></p>
-              <p align="justify" style="font-size:13px"> 1.设计激光雷达和相机紧耦合的六自由度位姿估计算法，解决实际情况中基于激光雷达和基于相机的定位系统的不足</p>
-              <p align="justify" style="font-size:13px"> 2.设计点云-图像的数据关联算法，实现视觉特征点的提取、跟踪，并结合点云数据恢复出3D视觉特征点</p>
-              <p align="justify" style="font-size:13px"> 3.优化地面分割算法，并在进行点云物体分割后提取激光特征点，以降低计算量，得到全局一致的轨迹和地图</p>
-              <p align="justify" style="font-size:13px"> 4.建立视觉特征点之间以及激光特征点之间的约束关系，使用L-M算法优化求解</p>
-              <p align="justify" style="font-size:13px"> 5.实现视觉和近邻融合的闭环检测和全局位姿图忧患，得到全局一致的轨迹和地图</p>
-              <p align="justify" style="font-size:13px"> 此方法可以实时地估计出无人车地位姿，缓解激光雷达在结构特征缺失地场景下约束不足的问题，精度超过开源的A-LOAM、LeGO-LOAM</p>
+              <p align="justify" style="font-size:13px"> 1.前端基于NDT匹配算法实现当前帧和局部地图匹配求取位姿，并对局部地图进行维护和更新</p>
+              <p align="justify" style="font-size:13px"> 2.利用ScanContext方法进行回环检测</p>
+              <p align="justify" style="font-size:13px"> 3.后端同时加入前端里程计帧间约束、GNSS先验位置约束、IMU预积分帧间约束、回环帧约束并定期进行关键帧位姿的优化</p>
+              <p align="justify" style="font-size:13px"> 4.进行全局的位姿图优化后，按照优化后的位姿拼接关键帧对应点云，获取地图</p>
 
               </td>
       </tr>
@@ -155,22 +153,37 @@
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
 
       <tbody><tr>
-          <td width="20%"><img src="./images/MSF/localize_on_map.png" alt="PontTuset" width="250" style="border-style: none"></td>
+          <td width="20%"><img src="./images/MSF/localize_on_map_with_ESKF.png" alt="PontTuset" width="250" style="border-style: none"></td>
           <td width="80%" valign="top">
             <papertitle>Localization based on pre-built point cloud map with Error-State Kalman Filter</papertitle>
 
               </p><p></p>
-              <p align="justify" style="font-size:13px"> 1.设计激光雷达和相机紧耦合的六自由度位姿估计算法，解决实际情况中基于激光雷达和基于相机的定位系统的不足</p>
-              <p align="justify" style="font-size:13px"> 2.设计点云-图像的数据关联算法，实现视觉特征点的提取、跟踪，并结合点云数据恢复出3D视觉特征点</p>
-              <p align="justify" style="font-size:13px"> 3.优化地面分割算法，并在进行点云物体分割后提取激光特征点，以降低计算量，得到全局一致的轨迹和地图</p>
-              <p align="justify" style="font-size:13px"> 4.建立视觉特征点之间以及激光特征点之间的约束关系，使用L-M算法优化求解</p>
-              <p align="justify" style="font-size:13px"> 5.实现视觉和近邻融合的闭环检测和全局位姿图忧患，得到全局一致的轨迹和地图</p>
-              <p align="justify" style="font-size:13px"> 此方法可以实时地估计出无人车地位姿，缓解激光雷达在结构特征缺失地场景下约束不足的问题，精度超过开源的A-LOAM、LeGO-LOAM</p>
-
+              <p align="justify" style="font-size:13px"> 1.通过IMU数据利用中值积分方法完成惯性解算，获取当前帧位置、姿态、速度的先验值</p>
+              <p align="justify" style="font-size:13px"> 2.基于IMU的误差状态传递方程对系统<strong>状态误差值</strong>和协方差进行递推（Prediction）</p>
+              <p align="justify" style="font-size:13px"> 3.无观测值时后验值直接等于先验值</p>
+              <p align="justify" style="font-size:13px"> 4.有观测（当前帧点云和点云地图匹配获得的位姿）时获取<strong>误差状态</strong>的观测值，求取卡尔曼滤波增益，以及后验协方差和后验<strong>误差状态</strong></p>
+              <p align="justify" style="font-size:13px"> 5.根据后验<strong>误差状态量</strong>的值更新后验位姿、速度、IMU bias</p>
               </td>
       </tr>
 
   </table>
+
+      <!--SECTION 7 -->
+      <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
+
+        <tbody><tr>
+            <td width="20%"><img src="./images/MSF/localize_on_map_with_Graph_Optimization.png" alt="PontTuset" width="250" style="border-style: none"></td>
+            <td width="80%" valign="top">
+              <papertitle>Localization based on pre-built point cloud map with Error-State Kalman Filter</papertitle>
+  
+                </p><p></p>
+                <p align="justify" style="font-size:13px"> 1.前端通过点云和地图匹配获取前端里程计</p>
+                <p align="justify" style="font-size:13px"> 2.后端引入关键帧对应点云和地图匹配的约束、前端里程计的关键帧帧间约束、帧间IMU预积分约束和边缘化产生的帧间约束对状态进行滑窗优化</p>
+  
+                </td>
+        </tr>
+  
+    </table>
 
 </td>
 </tr>
