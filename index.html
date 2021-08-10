@@ -125,7 +125,12 @@
             <papertitle>Tightly coupled Visual-LiDAR SLAM</papertitle>
               </p><p></p>
               <p align="justify" style="font-size:13px"> 1.设计激光雷达和相机紧耦合的六自由度位姿估计算法，解决实际情况中基于激光雷达和基于相机的定位系统的不足</p>
-              <p align="justify" style="font-size:13px"> 2.设计激光雷达和相机紧耦合的六自由度位姿估计算法，解决实际情况中基于激光雷达和基于相机的定位系统的不足</p>
+              <p align="justify" style="font-size:13px"> 2.设计点云-图像的数据关联算法，实现视觉特征点的提取、跟踪，并结合点云数据恢复出3D视觉特征点</p>
+              <p align="justify" style="font-size:13px"> 3.优化地面分割算法，并在进行点云物体分割后提取激光特征点，以降低计算量，得到全局一致的轨迹和地图</p>
+              <p align="justify" style="font-size:13px"> 4.建立视觉特征点之间以及激光特征点之间的约束关系，使用L-M算法优化求解</p>
+              <p align="justify" style="font-size:13px"> 5.实现视觉和近邻融合的闭环检测和全局位姿图忧患，得到全局一致的轨迹和地图</p>
+              <p align="justify" style="font-size:13px"> 此方法可以实时地估计出无人车地位姿，缓解激光雷达在结构特征缺失地场景下约束不足的问题，精度超过开源的A-LOAM、LeGO-LOAM</p>
+
               </td>
       </tr>
 
