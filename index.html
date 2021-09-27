@@ -151,6 +151,7 @@
           <td width="80%" valign="top">
             <papertitle>Mapping framework based on multi-sensor fusion with LiDAR, IMU and GNSS</papertitle>
               </p><p></p>
+              <p align="justify" style="font-size:13px"> 2020.11-2021.02 </p>
               <p align="justify" style="font-size:13px"> <strong>【数据预处理】:</strong> 对各种传感器数据进行<strong>时间戳同步</strong>，基于<strong>LiDAR</strong>与<strong>RTK</strong>外参将<strong>RTK</strong>位姿转换到<strong>LiDAR坐标系</strong>，作为位姿参考</p>
               <p align="justify" style="font-size:13px"> <strong>【前端】:</strong> 维护一个固定帧数的<strong>局部地图</strong>，采用NDT对当前帧激光点云做<strong>scan-to-map</strong>的匹配，获取<strong>前端激光里程计</strong></p>
               <p align="justify" style="font-size:13px"> <strong>【回环检测】:</strong> 基于手写<strong>Scan Context</strong>方法查找当前帧的候选回环帧，并求取粗略位姿初值，进而用ICP求取回环约束</p>
@@ -170,6 +171,7 @@
             <papertitle>Localization based on pre-built point cloud map with Error-State Kalman Filter</papertitle>
 
               </p><p></p>
+              <p align="justify" style="font-size:13px"> 2021.03-2021.04 </p>
               <p align="justify" style="font-size:13px"> <strong>【地图上定位初始化】:</strong> 基于<strong>GNSS</strong>或<strong>Scan Context</strong>方法(使用初始scan查询<strong>Scan Context</strong>索引)完成<strong>基于点云地图定位的初始化</strong></p>
               <p align="justify" style="font-size:13px"> <strong>【ESKF预测步】:</strong> 通过<strong>IMU数据</strong>利用<strong>中值积分</strong>方法完成<strong>惯性解算</strong>，<strong>解算结果</strong>作为当前帧<strong>位置、姿态、速度</strong>的<strong>先验值</strong></p>
               <p align="justify" style="font-size:13px"> <strong>【ESKF校正步】:</strong> 有<strong>观测</strong>（<strong>当前帧点云</strong>和<strong>点云地图</strong>匹配获取位姿）时求解<strong>误差状态</strong>的<strong>观测值</strong>，求解<strong>卡尔曼增益</strong>、<strong>后验协方差</strong>和<strong>后验误差状态值</strong>；无<strong>观测</strong>时，<strong>后验值</strong>直接等于<strong>先验值</strong></p>
@@ -189,9 +191,10 @@
               <papertitle>Localization based on pre-built point cloud map with Sliding Window and Graph Optimization</papertitle>
   
                 </p><p></p>
-                <p align="justify" style="font-size:13px"> <strong>【地图上定位初始化】:</strong> 基于GNSS或Scan Context方法(使用初始scan查询Scan Context索引)完成基于点云地图定位的初始化</p>
-                <p align="justify" style="font-size:13px"> <strong>【前端里程计】:</strong> 通过当前帧点云和地图匹配获取前端里程计</p>
-                <p align="justify" style="font-size:13px"> <strong>【基于滑动窗口的后端优化】:</strong> 维护一个固定长度的滑动窗口来保证定位的实时性，引入前端里程计的帧间约束、IMU预积分帧间约束和边缘化产生的约束对状态进行滑窗优化，获得实时的定位结果</p>
+                <p align="justify" style="font-size:13px"> 2021.05-2021.08 </p>
+                <p align="justify" style="font-size:13px"> <strong>【地图上定位初始化】:</strong> 基于<strong>GNSS</strong>或<strong>Scan Context</strong>方法(使用初始scan查询<strong>Scan Context</strong>索引)完成<strong>基于点云地图定位的初始化</strong></p>
+                <p align="justify" style="font-size:13px"> <strong>【前端里程计】:</strong> 通过<strong>当前帧点云</strong>和<strong>地图</strong>匹配获取前端里程计</p>
+                <p align="justify" style="font-size:13px"> <strong>【基于滑动窗口的后端优化】:</strong> 维护一个固定长度的<strong>滑动窗口</strong>来保证定位的实时性，引入<strong>前端里程计的帧间约束</strong>、<strong>IMU预积分帧间约束</strong>和<strong>边缘化产生的约束</strong>对状态进行<strong>滑窗优化</strong>，获得<strong>实时</strong>的定位结果</p>
                 <p align="justify" style="font-size:13px"> <strong>【验证】:</strong> 在公开的<strong>KITTI数据集</strong>和<strong>UrbanNav香港数据集</strong>上测试，本算法基于<strong>点云地图</strong>可以获取较高的定位精度</p>
                 </td>
         </tr>
@@ -206,6 +209,7 @@
               <td width="80%" valign="top">
                 <papertitle>Tightly coupled Visual-LiDAR SLAM</papertitle>
                   </p><p></p>
+                  <p align="justify" style="font-size:13px"> 2020.03-2020.09 </p>
                   <p align="justify" style="font-size:13px"> 设计<strong>激光雷达</strong>和<strong>相机紧耦合</strong>的六自由度位姿估计算法，解决实际情况中基于<strong>激光雷达</strong>和基于<strong>相机</strong>的定位系统的不足</p>
                   <p align="justify" style="font-size:13px"> 1.设计<strong>点云-图像的数据关联</strong>算法，实现<strong>视觉特征点</strong>的提取、跟踪，并结合点云数据<strong>恢复</strong>出<strong>3D视觉特征点</strong></p>
                   <p align="justify" style="font-size:13px"> 2.优化地面分割算法，并在进行点云物体分割后提取激光特征点，以降低计算量，得到全局一致的轨迹和地图</p>
