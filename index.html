@@ -151,11 +151,14 @@
           <td width="80%" valign="top">
             <papertitle>Mapping with GNSS prior constraint，IMU pre-integration constraint and relative pose constraint from front-end and loop closure</papertitle>
               </p><p></p>
-              <p align="justify" style="font-size:13px"> 1.前端基于NDT匹配算法实现当前帧和局部地图匹配求取位姿，并对局部地图进行维护和更新</p>
-              <p align="justify" style="font-size:13px"> 2.利用ScanContext方法进行回环检测</p>
-              <p align="justify" style="font-size:13px"> 3.后端同时加入前端里程计帧间约束、GNSS先验位置约束、IMU预积分帧间约束、回环帧约束并定期进行关键帧位姿的优化</p>
-              <p align="justify" style="font-size:13px"> 4.进行全局的位姿图优化后，按照优化后的位姿拼接关键帧对应点云，获取地图</p>
-
+              <p align="justify" style="font-size:13px"> <strong>【数据预处理】:</strong> 对各种传感器数据进行<strong>时间戳同步</strong>，基于<strong>LiDAR</strong>与<strong>RTK</strong>外参将<strong>RTK</strong>位姿转换到<strong>LiDAR坐标系</strong>，作为位姿参考</p>
+              <p align="justify" style="font-size:13px"> <strong>【前端】:</strong> 维护一个固定帧数的<strong>局部地图</strong>，采用NDT对当前帧激光点云做<strong>scan-to-map</strong>的匹配，获取<strong>前端激光里程计</strong></p>
+              <p align="justify" style="font-size:13px"> <strong>【回环检测】:</strong> 基于手写<strong>Scan Context</strong>方法查找当前帧的候选回环帧，并求取粗略位姿初值，进而用ICP求取回环约束</p>
+              <p align="justify" style="font-size:13px"> <strong>【后端】:</strong> 利用<strong>G2O</strong>引入<strong>前端里程计帧间约束</strong>、 <strong>IMU帧间约束</strong>、 <strong>RTK对单帧的位置约束</strong>、 <strong>回环约束</strong>，对<strong>关键帧位姿</strong>进行优化</p>
+              <p align="justify" style="font-size:13px"> <strong>【建图】:</strong> 执行<strong>全局位姿图优化</strong>后，根据<strong>优化后的关键帧位姿</strong>拼接每个<strong>关键帧</strong>对应的的激光点云，得到完整的<strong>点云地图</strong></p>
+              <p align="justify" style="font-size:13px"> <strong>【验证】:</strong> 在公开的<strong>KITTI数据集</strong>和<strong>UrbanNav香港数据集</strong>上测试，本算法获取的<strong>点云地图</strong>可以很好地支持后续的<strong>定位需求</strong></p>
+              <p align="justify" style="font-size:13px"> <strong>【TO DO/改进】:</strong> 前端采用<strong>MULLS-ICP</strong>提取点、线、面特征，提高构建的<strong>约束</strong>的合理性，并对<strong>动态物体</strong>进行一定滤波，保证建图效果不受<strong>动态物体</strong>影响</p>
+              <strong></strong>
               </td>
       </tr>
     <!--SECTION 6 -->
