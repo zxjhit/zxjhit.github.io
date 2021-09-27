@@ -170,11 +170,11 @@
             <papertitle>Localization based on pre-built point cloud map with Error-State Kalman Filter</papertitle>
 
               </p><p></p>
-              <p align="justify" style="font-size:13px"> 1.通过IMU数据利用中值积分方法完成惯性解算，获取当前帧位置、姿态、速度的先验值</p>
-              <p align="justify" style="font-size:13px"> 2.基于IMU的误差状态传递方程对系统<strong>状态误差值</strong>和协方差进行递推（Prediction）</p>
-              <p align="justify" style="font-size:13px"> 3.无观测值时后验值直接等于先验值</p>
-              <p align="justify" style="font-size:13px"> 4.有观测（当前帧点云和点云地图匹配获得的位姿）时获取<strong>误差状态</strong>的观测值，求取卡尔曼滤波增益，以及后验协方差和后验<strong>误差状态</strong></p>
-              <p align="justify" style="font-size:13px"> 5.根据后验<strong>误差状态量</strong>的值更新后验位姿、速度、IMU bias</p>
+              <p align="justify" style="font-size:13px"> <strong>【地图上定位初始化】:</strong> 基于GNSS或Scan Context方法(使用初始scan查询Scan Context索引)完成基于点云地图定位的初始化</p>
+              <p align="justify" style="font-size:13px"> <strong>【ESKF预测步】:</strong> 通过IMU数据利用中值积分方法完成惯性解算，解算结果作为当前帧位置、姿态、速度的先验</p>
+              <p align="justify" style="font-size:13px"> <strong>【ESKF校正步】:</strong> 有观测（当前帧点云和点云地图匹配获取位姿）时求解误差状态的观测值，求解卡尔曼增益、后验协方差和后验误差状态值；无观测时，后验值直接等于先验值</p>
+              <p align="justify" style="font-size:13px"> <strong>【求解状态量后验值】:</strong> 根据后验误差状态量的值更新位姿、速度、IMU bias的后验值</p>
+              <p align="justify" style="font-size:13px"> <strong>【验证】:</strong> 在公开的<strong>KITTI数据集</strong>和<strong>UrbanNav香港数据集</strong>上测试，本算法基于点云地图可以获取很高的定位精度</p>
               </td>
       </tr>
 
