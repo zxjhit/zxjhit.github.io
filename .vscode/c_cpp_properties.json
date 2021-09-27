@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/zxj3/sensor_fusion2_ws/install/include/**",
+        "/home/zxj3/catkin_ws/devel/include/**",
+        "/home/zxj3/sensor_fusion2_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/zxj3/catkin_ws/src/A-LOAM/include/**",
+        "/home/zxj3/catkin_ws/src/VINS-Mono/camera_model/include/**",
+        "/home/zxj3/catkin_ws/src/floam/include/**",
+        "/home/zxj3/catkin_ws/src/SC-LeGO-LOAM/SC-LeGO-LOAM/LeGO-LOAM/include/**",
+        "/home/zxj3/catkin_ws/src/LIO-SAM/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}
