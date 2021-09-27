@@ -189,9 +189,10 @@
               <papertitle>Localization based on pre-built point cloud map with Sliding Window and Graph Optimization</papertitle>
   
                 </p><p></p>
-                <p align="justify" style="font-size:13px"> 1.前端通过点云和地图匹配获取前端里程计</p>
-                <p align="justify" style="font-size:13px"> 2.后端引入关键帧对应点云和地图匹配的约束、前端里程计的关键帧帧间约束、帧间IMU预积分约束和边缘化产生的约束对状态进行滑窗优化</p>
-  
+                <p align="justify" style="font-size:13px"> <strong>【地图上定位初始化】:</strong> 基于GNSS或Scan Context方法(使用初始scan查询Scan Context索引)完成基于点云地图定位的初始化</p>
+                <p align="justify" style="font-size:13px"> <strong>【前端里程计】:</strong> 通过当前帧点云和地图匹配获取前端里程计</p>
+                <p align="justify" style="font-size:13px"> <strong>【基于滑动窗口的后端优化】:</strong> 维护一个固定长度的滑动窗口来保证定位的实时性，引入前端里程计的帧间约束、IMU预积分帧间约束和边缘化产生的约束对状态进行滑窗优化，获得实时的定位结果</p>
+                <p align="justify" style="font-size:13px"> <strong>【验证】:</strong> 在公开的<strong>KITTI数据集</strong>和<strong>UrbanNav香港数据集</strong>上测试，本算法基于点云地图可以获取较高的定位精度</p>
                 </td>
         </tr>
   
