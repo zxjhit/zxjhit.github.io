@@ -149,7 +149,7 @@
       <tbody><tr>
           <td width="20%"><img src="./images/mapping/mapping_10s.gif" alt="PontTuset" width="250" style="border-style: none"></td>
           <td width="80%" valign="top">
-            <papertitle>Mapping with GNSS prior constraint，IMU pre-integration constraint and relative pose constraint from front-end and loop closure</papertitle>
+            <papertitle>Mapping framework based on multi-sensor fusion with LiDAR, IMU and GNSS</papertitle>
               </p><p></p>
               <p align="justify" style="font-size:13px"> <strong>【数据预处理】:</strong> 对各种传感器数据进行<strong>时间戳同步</strong>，基于<strong>LiDAR</strong>与<strong>RTK</strong>外参将<strong>RTK</strong>位姿转换到<strong>LiDAR坐标系</strong>，作为位姿参考</p>
               <p align="justify" style="font-size:13px"> <strong>【前端】:</strong> 维护一个固定帧数的<strong>局部地图</strong>，采用NDT对当前帧激光点云做<strong>scan-to-map</strong>的匹配，获取<strong>前端激光里程计</strong></p>
@@ -165,7 +165,7 @@
     <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
 
       <tbody><tr>
-          <td width="20%"><img src="./images/MSF/localize_on_map_with_ESKF.png" alt="PontTuset" width="250" style="border-style: none"></td>
+          <td width="20%"><img src="./images/ESKF_localization/ESKF_HK_10s.gif" alt="PontTuset" width="250" style="border-style: none"></td>
           <td width="80%" valign="top">
             <papertitle>Localization based on pre-built point cloud map with Error-State Kalman Filter</papertitle>
 
@@ -184,7 +184,7 @@
       <table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
 
         <tbody><tr>
-            <td width="20%"><img src="./images/MSF/localize_on_map_with_Graph_Optimization.png" alt="PontTuset" width="250" style="border-style: none"></td>
+            <td width="20%"><img src="./images/sliding_window_localization/SlidingWindow_10s.gif" alt="PontTuset" width="250" style="border-style: none"></td>
             <td width="80%" valign="top">
               <papertitle>Localization based on pre-built point cloud map with Sliding Window and Graph Optimization</papertitle>
   
