@@ -174,7 +174,7 @@
               <p align="justify" style="font-size:13px">  <strong>前端</strong>采用
                                         <strong>多度量线性最小二乘ICP (MULLS-ICP)</strong>提取<strong>点、线、面特征</strong>，
                                         提高构建的<strong>约束</strong>的合理性，并对<strong>动态物体</strong>进行一定程度滤波，
-                                        保证建图效果不受<strong>动态物体</strong>影响</p>
+                                        保证建图效果不受<strong>动态物体</strong>影响;也可考虑引入用点云<strong>恢复深度信息</strong>的<strong>视觉特征点</strong>构成的约束。</p>
               <p align="justify" style="font-size:13px">  ② <strong>退化问题处理：</strong></p>
               <p align="justify" style="font-size:13px">  对于关于$6$维优化变量$\boldsymbol{x}$的优化问题
                       ${\rm arg}$ $\mathop{{\rm min}} \limits_{\boldsymbol{x}}||\boldsymbol{Ax} - \boldsymbol{b}||_{\boldsymbol{P}}^2$，
@@ -190,9 +190,9 @@
                       $$\boldsymbol{V}_f = [\boldsymbol{v}_1,...,\boldsymbol{v}_m,\boldsymbol{v}_{m+1},...,\boldsymbol{v}_6],$$ -->
                       $$
                       \begin{aligned}
-                      &\boldsymbol{V}_p = [\boldsymbol{v}_1,...,\boldsymbol{v}_m,0,...,0],\\
-                      &\boldsymbol{V}_u = [0,...,0,\boldsymbol{v}_{m+1},...,\boldsymbol{v}_6],\\ 
-                      &\boldsymbol{V}_f = [\boldsymbol{v}_1,...,\boldsymbol{v}_m,\boldsymbol{v}_{m+1},...,\boldsymbol{v}_6],\\
+                      &\boldsymbol{V}_p = [\boldsymbol{v}_1,...,\boldsymbol{v}_m,0,...,0]^\mathrm{T},\\
+                      &\boldsymbol{V}_u = [0,...,0,\boldsymbol{v}_{m+1},...,\boldsymbol{v}_6]^\mathrm{T},\\ 
+                      &\boldsymbol{V}_f = [\boldsymbol{v}_1,...,\boldsymbol{v}_m,\boldsymbol{v}_{m+1},...,\boldsymbol{v}_6]^\mathrm{T},\\
                       \end{aligned}
                       $$
                       
@@ -200,7 +200,7 @@
                                      使用<strong>预测值</strong>$\boldsymbol{x}_p$，
                       <strong>良态方向</strong>$\boldsymbol{v}_{m+1},...,\boldsymbol{v}_6$
                              使用<strong>优化问题</strong>求解出的<strong>更新量</strong>$\boldsymbol{x}_u$。
-                      最终的解为：$$\boldsymbol{x}_f = \boldsymbol{x}_{p}^{’} + \boldsymbol{x}_{u}^{’}$$
+                      最终的<strong>解</strong>为：$$\boldsymbol{x}_f = \boldsymbol{x}_{p}^{’} + \boldsymbol{x}_{u}^{’}$$
                       其中，$\boldsymbol{x}_{p}^{’} = \boldsymbol{V}_f^{-1}\boldsymbol{V}_p\,\boldsymbol{x}_p，
                             \boldsymbol{x}_{u}^{’} = \boldsymbol{V}_f^{-1}\boldsymbol{V}_u\,\boldsymbol{x}_u$
                       
@@ -305,7 +305,7 @@
                   <p align="justify" style="font-size:13px"> 2020.03-2020.09 </p>
                   <p align="justify" style="font-size:13px"> 设计<strong>激光雷达</strong>和<strong>相机紧耦合</strong>的六自由度位姿估计算法，解决实际情况中基于<strong>激光雷达</strong>和基于<strong>相机</strong>的定位系统的不足</p>
                   <p align="justify" style="font-size:13px"> 1.设计<strong>点云-图像的数据关联</strong>算法，实现<strong>视觉特征点</strong>的提取、跟踪，并结合点云数据<strong>恢复</strong>出<strong>3D视觉特征点</strong></p>
-                  <p align="justify" style="font-size:13px"> 2.优化地面分割算法，并在进行点云物体分割后提取激光特征点，以降低计算量，得到全局一致的轨迹和地图</p>
+                  <p align="justify" style="font-size:13px"> 2.优化<strong>地面分割算法</strong>，并在进行点云物体分割后提取激光特征点，以降低计算量，得到全局一致的轨迹和地图</p>
                   <p align="justify" style="font-size:13px"> 3.建立<strong>视觉特征点</strong>之间以及<strong>激光特征点</strong>之间的约束关系，使用L-M算法优化求解</p>
                   <p align="justify" style="font-size:13px"> 4.实现<strong>近邻</strong>的<strong>闭环检测</strong>和<strong>全局位姿图优化</strong>，得到<strong>全局一致</strong>的<strong>轨迹</strong>和<strong>地图</strong></p>
                   <p align="justify" style="font-size:13px"> <strong>【评价】:</strong> 此方法可以<strong>实时</strong>地估计出无人车地位姿，缓解激光雷达在<strong>结构特征缺失地场景</strong>下约束不足的问题，精度超过开源的A-LOAM、LeGO-LOAM</p>    
