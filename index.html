@@ -237,8 +237,12 @@
               </p><p></p>
               <p align="justify" style="font-size:13px"> 2021.03-2021.04 </p>
               <p align="justify" style="font-size:13px"> <strong>【地图上定位初始化】:</strong> 基于<strong>GNSS</strong>或<strong>Scan Context</strong>方法(使用初始scan查询<strong>Scan Context</strong>索引)完成<strong>基于点云地图定位的初始化</strong></p>
-              <p align="justify" style="font-size:13px"> <strong>【ESKF预测步】:</strong> 通过<strong>IMU数据</strong>利用<strong>中值积分</strong>方法完成<strong>惯性解算</strong>，<strong>解算结果</strong>作为当前帧<strong>位置、姿态、速度</strong>的<strong>先验值</strong></p>
-              <p align="justify" style="font-size:13px"> <strong>【ESKF校正步】:</strong> 有<strong>观测</strong>（<strong>当前帧点云</strong>和<strong>点云地图</strong>匹配获取位姿）时求解<strong>误差状态</strong>的<strong>观测值</strong>，求解<strong>卡尔曼增益</strong>、<strong>后验协方差</strong>和<strong>后验误差状态值</strong>；无<strong>观测</strong>时，<strong>后验值</strong>直接等于<strong>先验值</strong></p>
+              <p align="justify" style="font-size:13px"> <strong>【ESKF预测步】:</strong> 通过<strong>IMU数据</strong>利用<strong>中值积分</strong>方法完成<strong>惯性解算</strong>，
+                            <strong>解算结果</strong>作为当前帧<strong>位置、姿态、速度状态误差</strong>的<strong>先验值</strong></p>
+              <p align="justify" style="font-size:13px"> <strong>【ESKF校正步】:
+                            </strong> 有<strong>观测</strong>（<strong>当前帧点云</strong>和<strong>点云地图</strong>匹配获取位姿）时
+                            求解<strong>误差状态</strong>的<strong>观测值</strong>，求解<strong>卡尔曼增益</strong>、<strong>后验协方差</strong>
+                            和<strong>后验误差状态值</strong>；无<strong>观测</strong>时，<strong>后验值</strong>直接等于<strong>先验值</strong></p>
               <p align="justify" style="font-size:13px"> <strong>【求解状态量后验值】:</strong> 根据<strong>后验误差状态量</strong>的值更新<strong>位姿、速度、IMU bias</strong>的<strong>后验值</strong></p>
               <p align="justify" style="font-size:13px"> <strong>【验证】:</strong> 在公开的<strong>KITTI数据集</strong>和<strong>UrbanNav香港数据集</strong>上测试，本算法基于<strong>点云地图</strong>可以获取很高的定位精度</p>
               </td>
